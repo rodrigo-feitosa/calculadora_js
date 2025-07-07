@@ -1,0 +1,24 @@
+body {
+    background-color: #d3d3d3;
+}
+
+button {
+    width: 50px;
+    height: 50px;
+}
+
+#display {
+    height: 50px;
+}
+
+#btn_apaga {
+    width: 100px;
+}
+
+#calculadora {
+    max-width: 300px;
+}
+
+.nav .nav-link:hover {
+    transform: scale(1.1);
+}

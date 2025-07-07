@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <title>App calculadora</title>
+</head>
+<body>
+    <div class="container mb-5">
+        <header>
+            <nav class="navbar justify-content-center">
+                <div>
+                    <ul class="nav">
+                        <li><a class="nav-link" href="index.html">Início</a></li>
+                        <li><a class="nav-link" href="">Científica</a></li>
+                        <li><a class="nav-link" href="">Financeira</a></li>
+                        <li><a class="nav-link" href="">Gráfica</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+    <main>
+        <section id="calculadora" class="container text-center bg-white py-5 rounded shadow">
+            <input class="mb-3" id="display" disabled />
+            <div class="row mb-1">
+                <div class="col">
+                    <button class="btn btn-danger" onclick="clearDisplay()">C</button>
+                    <button class="btn btn-light" onclick="append('7')">7</button>
+                    <button class="btn btn-light" onclick="append('8')">8</button>
+                    <button class="btn btn-light" onclick="append('9')">9</button>
+                    <button class="btn btn-light" onclick="append('/')">/</button>
+                </div>
+            </div>
+
+            <div class="row mb-1">
+                <div class="col">
+                    <button class="btn btn-light" onclick="append('4')">4</button>
+                    <button class="btn btn-light" onclick="append('5')">5</button>
+                    <button class="btn btn-light" onclick="append('6')">6</button>
+                    <button class="btn btn-light" onclick="append('*')">*</button>
+                    <button class="btn btn-light" onclick="append('^')">^</button>
+                </div>
+            </div>
+
+            <div class="row mb-1">   
+                <div class="col">
+                    <button class="btn btn-light" onclick="append('1')">1</button>
+                    <button class="btn btn-light" onclick="append('2')">2</button>
+                    <button class="btn btn-light" onclick="append('3')">3</button>
+                    <button class="btn btn-light" onclick="append('-')">-</button>
+                    <button class="btn btn-light" onclick="append('√')">&radic;</button>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-light" onclick="append('0')">0</button>
+                    <button class="btn btn-light" onclick="append('.')">.</button>
+                    <button class="btn btn-light" onclick="append('%')">%</button>
+                    <button class="btn btn-light" onclick="append('+')">+</button>
+                    <button class="btn btn-success" onclick="calculate()">=</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/calc-basica.js"></script>
+</body>
+</html>
