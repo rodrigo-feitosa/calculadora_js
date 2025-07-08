@@ -27,6 +27,7 @@ function calculate() {
     }
 }
 
+// Modal para Valor Presente
 const btnAbrirVP = document.getElementById('abrirModalValorPresente');
 const btnFecharVP = document.getElementById('fecharModalValorPresente');
 
@@ -42,12 +43,42 @@ btnFecharVP.onclick = function() {
 
 function calcularValorPresente() {
     const valorFuturo = parseFloat(document.getElementById('valorFuturo').value);
-    const taxaJuros = parseFloat(document.getElementById('taxaJuros').value);
-    const periodos = parseFloat(document.getElementById('periodos').value);
+    const taxaJuros = parseFloat(document.getElementById('taxaJurosVP').value);
+    const periodos = parseFloat(document.getElementById('periodosVP').value);
+
     const taxaDecimal = taxaJuros / 100;
     const valorPresente = valorFuturo / Math.pow(1 + taxaDecimal, periodos);
-    
+
     console.log(`Valor Presente: ${valorPresente}`);
     document.getElementById('display').value = valorPresente.toFixed(2);
     document.getElementById('modalValorPresente').style.display = 'none';
+}
+
+
+
+// Modal para Valor futuro
+const btnAbrirVF = document.getElementById('abrirModalValorFuturo');
+const btnFecharVF = document.getElementById('fecharModalValorFuturo');
+
+btnAbrirVF.onclick = function() {
+    const modal = document.getElementById('modalValorFuturo');
+    modal.style.display = 'block';
+};
+
+btnFecharVF.onclick = function() {
+    const modal = document.getElementById('modalValorFuturo');
+    modal.style.display = 'none';
+};
+
+function calcularValorFuturo() {
+    const valorPresente = parseFloat(document.getElementById('valorPresente').value);
+    const taxaJuros = parseFloat(document.getElementById('taxaJurosVF').value);
+    const periodos = parseFloat(document.getElementById('periodosVF').value);
+
+    const taxaDecimal = taxaJuros / 100;
+    const valorFuturo = valorPresente * Math.pow(1 + taxaDecimal, periodos);
+
+    console.log(`Valor Futuro: ${valorFuturo}`);
+    document.getElementById('display').value = valorFuturo.toFixed(2);
+    document.getElementById('modalValorFuturo').style.display = 'none';
 }

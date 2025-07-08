@@ -37,7 +37,7 @@
                     <button class="btn btn-light" onclick="append('(')">(</button>
                     <button class="btn btn-light" onclick="append(')')">)</button>
                     <button id="abrirModalValorPresente" class="btn btn-light">VP</button>
-                    <button class="btn btn-light" onclick="valorFuturo()">VF</button>
+                    <button id="abrirModalValorFuturo" class="btn btn-light">VF</button>
                 </div>
             </div>
 
@@ -50,6 +50,8 @@
                     <button class="btn btn-light" onclick="append('^')">^</button>
                 </div>
                 <div class="col-6">
+                    <button id="abrirModalJurosSimples" class="btn btn-light">Juros simples</button>
+                    <button id="abrirModalJurosCompostos" class="btn btn-light">Juros compostos </button>
                 </div>
             </div>
 
@@ -83,12 +85,34 @@
                 <h2>Valor Presente</h2>
                 <label for="valorFuturo">Valor Futuro (VF):</label>
                 <input type="number" id="valorFuturo" class="form-control mb-2">
-                <label for="taxaJuros">Taxa de Juros (%):</label>
-                <input type="number" id="taxaJuros" class="form-control mb-2">
-                <label for="periodos">Períodos:</label>
-                <input type="number" id="periodos" class="form-control mb-2">
+
+                <label for="taxaJurosVP">Taxa de Juros (%):</label>
+                <input type="number" id="taxaJurosVP" class="form-control mb-2">
+
+                <label for="periodosVP">Períodos:</label>
+                <input type="number" id="periodosVP" class="form-control mb-2">
+
                 <button type="button" class="btn btn-primary" onclick="calcularValorPresente()">Calcular VP</button>
                 <button type="button" class="btn btn-secondary" id="fecharModalValorPresente">Fechar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalValorFuturo" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);">
+        <div style="background:white; margin:10% auto; padding:20px; width:300px; position:relative;">
+            <form>
+                <h2>Valor Futuro</h2>
+                <label for="valorPresente">Valor Presente (VP):</label>
+                <input type="number" id="valorPresente" class="form-control mb-2">
+
+                <label for="taxaJurosVF">Taxa de Juros (%):</label>
+                <input type="number" id="taxaJurosVF" class="form-control mb-2">
+
+                <label for="periodosVF">Períodos:</label>
+                <input type="number" id="periodosVF" class="form-control mb-2">
+
+                <button type="button" class="btn btn-primary" onclick="calcularValorFuturo()">Calcular VF</button>
+                <button type="button" class="btn btn-secondary" id="fecharModalValorFuturo">Fechar</button>
             </form>
         </div>
     </div>
