@@ -27,7 +27,8 @@ function calculate() {
     expression = expression.replace(/sinh\(([^)]+)\)/g, 'Math.sinh(toRadians($1))');
     expression = expression.replace(/tanh\(([^)]+)\)/g, 'Math.tanh(toRadians($1))');
 
-    expression = expression.replace(/e\(/g, 'Math.E(');
+    expression = expression.replace(/e/g, 'Math.E');
+    expression = expression.replace(/π/g, 'Math.PI');
     expression = expression.replace(/ln\(/g, 'Math.LN10(');
     expression = expression.replace(/log\(/g, 'Math.log(');
 
