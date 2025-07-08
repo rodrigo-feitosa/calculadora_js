@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilo.css">
     <title>App calculadora</title>
 </head>
 <body>
@@ -13,8 +13,8 @@
             <nav class="navbar justify-content-center">
                 <div>
                     <ul class="nav">
-                        <li><a class="nav-link" href="index.html">Início</a></li>
-                        <li><a class="nav-link" href="/paginas/avancada.html">Avançada</a></li>
+                        <li><a class="nav-link" href="../index.html">Início</a></li>
+                        <li><a class="nav-link" href="/paginas/avancada.html">Científica</a></li>
                         <li><a class="nav-link" href="">Financeira</a></li>
                         <li><a class="nav-link" href="">Gráfica</a></li>
                     </ul>
@@ -23,36 +23,52 @@
         </header>
     </div>
     <main>
-        <section id="calc-basica" class="container text-center bg-white py-5 rounded shadow">
-            <input class="mb-3" id="display" disabled />
+        <section id="calc-avancada" class="container text-center bg-white py-5 rounded shadow">
+            <input class="mb-3 w-100" id="display" disabled />
             <div class="row mb-1">
-                <div class="col">
+                <div class="col-6">
                     <button class="btn btn-danger" onclick="clearDisplay()">C</button>
                     <button class="btn btn-light" onclick="append('7')">7</button>
                     <button class="btn btn-light" onclick="append('8')">8</button>
                     <button class="btn btn-light" onclick="append('9')">9</button>
                     <button class="btn btn-light" onclick="append('/')">/</button>
                 </div>
+                <div class="col-6">
+                    <button class="btn btn-light" onclick="append('cos')">cos</button>
+                    <button class="btn btn-light" onclick="append('sin')">sin</button>
+                    <button class="btn btn-light" onclick="append('tan')">tan</button>
+                    <button class="btn btn-light" onclick="append('(')">(</button>
+                    <button class="btn btn-light" onclick="append(')')">)</button>
+                </div>
             </div>
 
             <div class="row mb-1">
-                <div class="col">
+                <div class="col-6">
                     <button class="btn btn-light" onclick="append('4')">4</button>
                     <button class="btn btn-light" onclick="append('5')">5</button>
                     <button class="btn btn-light" onclick="append('6')">6</button>
                     <button class="btn btn-light" onclick="append('*')">*</button>
                     <button class="btn btn-light" onclick="append('^')">^</button>
                 </div>
+                <div class="col-6">
+                    <button class="btn btn-light" onclick="append('cosh')">cosh</button>
+                    <button class="btn btn-light" onclick="append('sinh')">sinh</button>
+                    <button class="btn btn-light" onclick="append('tanh')">tanh</button>
+                </div>
             </div>
 
             <div class="row mb-1">   
-                <div class="col">
+                <div class="col-6">
                     <button class="btn btn-light" onclick="append('1')">1</button>
                     <button class="btn btn-light" onclick="append('2')">2</button>
                     <button class="btn btn-light" onclick="append('3')">3</button>
                     <button class="btn btn-light" onclick="append('-')">-</button>
                     <button class="btn btn-light" onclick="append('√')">&radic;</button>
-
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-light" onclick="append('e')">e</button>
+                    <button class="btn btn-light" onclick="append('ln')">ln</button>
+                    <button class="btn btn-light" onclick="append('log')">log</button>
                 </div>
             </div>
 
@@ -64,9 +80,14 @@
                     <button class="btn btn-light" onclick="append('+')">+</button>
                     <button class="btn btn-success" onclick="calculate()">=</button>
                 </div>
+                <div class="col-6">
+                    <button class="btn btn-light" onclick="append('!')">x!</button>
+                    <button class="btn btn-light" onclick="fatorar()">a*b</button>
+                    <button class="btn btn-light" onclick="append('x⁻¹')">x⁻¹</button>
+                </div>
             </div>
         </section>
     </main>
-    <script src="js/calc-basica.js"></script>
+    <script src="../js/calc-avancada.js"></script>
 </body>
 </html>

@@ -2,11 +2,6 @@ body {
     background-color: #d3d3d3;
 }
 
-button {
-    width: 50px;
-    height: 50px;
-}
-
 #display {
     height: 50px;
 }
@@ -15,10 +10,19 @@ button {
     width: 100px;
 }
 
-#calculadora {
+#calc-basica {
     max-width: 300px;
+}
+
+#calc-avancada {
+    max-width: 600px;
 }
 
 .nav .nav-link:hover {
     transform: scale(1.1);
+}
+
+.btn {
+    border: 2px solid #000;
+    border-radius: 6px;
 }
