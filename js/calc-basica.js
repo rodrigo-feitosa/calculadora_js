@@ -13,6 +13,7 @@ function calculate() {
 
     expression = expression.replace(/\^/g, '**');
     expression = expression.replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)');
+    expression = expression.replace(/%/g, '/100');
 
     try {
         const result = eval(expression);

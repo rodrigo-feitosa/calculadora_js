@@ -18,6 +18,7 @@ function calculate() {
 
     expression = expression.replace(/\^/g, '**');
     expression = expression.replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)');
+    expression = expression.replace(/%/g, '/100');
 
     expression = expression.replace(/cos\(([^)]+)\)/g, 'Math.cos(toRadians($1))');
     expression = expression.replace(/sin\(([^)]+)\)/g, 'Math.sin(toRadians($1))');
