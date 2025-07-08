@@ -1,0 +1,53 @@
+const display = document.getElementById('display');
+
+function append(value) {
+    display.value += value;
+}
+
+function clearDisplay() {
+    display.value = '';
+}
+
+function toRadians(degrees) {
+    return degrees * Math.PI / 180;
+}
+
+function calculate() {
+    let expression = document.getElementById('display').value;
+
+    expression = expression.replace(/\^/g, '**');
+    expression = expression.replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)');
+    expression = expression.replace(/%/g, '/100');
+
+    try {
+        const result = eval(expression);
+        document.getElementById('display').value = result;
+    } catch (e) {
+        document.getElementById('display').value = 'Erro';
+    }
+}
+
+const btnAbrirVP = document.getElementById('abrirModalValorPresente');
+const btnFecharVP = document.getElementById('fecharModalValorPresente');
+
+btnAbrirVP.onclick = function() {
+    const modal = document.getElementById('modalValorPresente');
+    modal.style.display = 'block';
+};
+
+btnFecharVP.onclick = function() {
+    const modal = document.getElementById('modalValorPresente');
+    modal.style.display = 'none';
+};
+
+function calcularValorPresente() {
+    const valorFuturo = parseFloat(document.getElementById('valorFuturo').value);
+    const taxaJuros = parseFloat(document.getElementById('taxaJuros').value);
+    const periodos = parseFloat(document.getElementById('periodos').value);
+    const taxaDecimal = taxaJuros / 100;
+    const valorPresente = valorFuturo / Math.pow(1 + taxaDecimal, periodos);
+    
+    console.log(`Valor Presente: ${valorPresente}`);
+    document.getElementById('display').value = valorPresente.toFixed(2);
+    document.getElementById('modalValorPresente').style.display = 'none';
+}
