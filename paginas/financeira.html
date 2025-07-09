@@ -51,7 +51,6 @@
                 </div>
                 <div class="col-6">
                     <button id="abrirModalJurosSimples" class="btn btn-light">Juros simples</button>
-                    <button id="abrirModalJurosCompostos" class="btn btn-light">Juros compostos </button>
                 </div>
             </div>
 
@@ -64,6 +63,7 @@
                     <button class="btn btn-light" onclick="append('√')">&radic;</button>
                 </div>
                 <div class="col-6">
+                    <button id="abrirModalJurosCompostos" class="btn btn-light">Juros compostos </button>
                 </div>
             </div>
 
@@ -113,6 +113,44 @@
 
                 <button type="button" class="btn btn-primary" onclick="calcularValorFuturo()">Calcular VF</button>
                 <button type="button" class="btn btn-secondary" id="fecharModalValorFuturo">Fechar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalJurosSimples" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);">
+        <div style="background:white; margin:10% auto; padding:20px; width:500px; position:relative;">
+            <form>
+                <h2>Juros Simples</h2>
+                <label for="valorInicialSimples">Valor Inicial:</label>
+                <input type="number" id="valorInicialSimples" class="form-control mb-2">
+
+                <label for="taxaJurosSimples">Taxa de Juros (%):</label>
+                <input type="number" id="taxaJurosSimples" class="form-control mb-2">
+
+                <label for="periodosSimples">Períodos:</label>
+                <input type="number" id="periodosSimples" class="form-control mb-2">
+
+                <button type="button" class="btn btn-primary" onclick="calcularJurosSimples()">Calcular Juros Simples</button>
+                <button type="button" class="btn btn-secondary" id="fecharModalJurosSimples">Fechar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalJurosCompostos" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);">
+        <div style="background:white; margin:10% auto; padding:20px; width:500px; position:relative;">
+            <form>
+                <h2>Juros Compostos</h2>
+                <label for="valorInicialComposto">Valor Inicial:</label>
+                <input type="number" id="valorInicialComposto" class="form-control mb-2">
+
+                <label for="taxaJurosCompostos">Taxa de Juros (%):</label>
+                <input type="number" id="taxaJurosCompostos" class="form-control mb-2">
+
+                <label for="periodosCompostos">Períodos:</label>
+                <input type="number" id="periodosCompostos" class="form-control mb-2">
+
+                <button type="button" class="btn btn-primary" onclick="calcularJurosCompostos()">Calcular Juros Compostos</button>
+                <button type="button" class="btn btn-secondary" id="fecharModalJurosCompostos">Fechar</button>
             </form>
         </div>
     </div>

@@ -82,3 +82,59 @@ function calcularValorFuturo() {
     document.getElementById('display').value = valorFuturo.toFixed(2);
     document.getElementById('modalValorFuturo').style.display = 'none';
 }
+
+
+// Modal para Juros simples
+const btnAbrirJurosSimples = document.getElementById('abrirModalJurosSimples');
+const btnFecharJurosSimples = document.getElementById('fecharModalJurosSimples');
+
+btnAbrirJurosSimples.onclick = function() {
+    const modal = document.getElementById('modalJurosSimples');
+    modal.style.display = 'block';
+}
+
+btnFecharJurosSimples.onclick = function() {
+    const modal = document.getElementById('modalJurosSimples');
+    modal.style.display = 'none';
+}
+
+function calcularJurosSimples() {
+    const valorInicial = parseFloat(document.getElementById('valorInicialSimples').value);
+    const taxaJuros = parseFloat(document.getElementById('taxaJurosSimples').value);
+    const periodos = parseFloat(document.getElementById('periodosSimples').value);
+
+    const taxaDecimal = taxaJuros / 100;
+    const jurosSimples = valorInicial + (valorInicial*taxaDecimal*periodos);
+
+    console.log(`Juros Simples: ${jurosSimples}`);
+    document.getElementById('display').value = jurosSimples.toFixed(2);
+    document.getElementById('modalJurosSimples').style.display = 'none';
+}
+
+
+// Modal para Juros compostos
+const btnAbrirJurosCompostos = document.getElementById('abrirModalJurosCompostos');
+const btnFecharJurosCompostos = document.getElementById('fecharModalJurosCompostos');
+
+btnAbrirJurosCompostos.onclick = function() {
+    const modal = document.getElementById('modalJurosCompostos');
+    modal.style.display = 'block';
+}
+
+btnFecharJurosCompostos.onclick = function() {
+    const modal = document.getElementById('modalJurosCompostos');
+    modal.style.display = 'none';
+}
+
+function calcularJurosCompostos() {
+    const valorInicial = parseFloat(document.getElementById('valorInicialComposto').value);
+    const taxaJuros = parseFloat(document.getElementById('taxaJurosCompostos').value);
+    const periodos = parseFloat(document.getElementById('periodosCompostos').value);
+
+    const taxaDecimal = taxaJuros / 100;
+    const jurosCompostos = valorInicial * Math.pow(1 + taxaDecimal, periodos);
+
+    console.log(`Juros Compostos: ${jurosCompostos}`);
+    document.getElementById('display').value = jurosCompostos.toFixed(2);
+    document.getElementById('modalJurosCompostos').style.display = 'none';
+}

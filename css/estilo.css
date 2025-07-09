@@ -18,6 +18,10 @@ body {
     max-width: 600px;
 }
 
+#calc-financeira {
+    max-width: 600px;
+}
+
 .nav .nav-link:hover {
     transform: scale(1.1);
 }
