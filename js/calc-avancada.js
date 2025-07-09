@@ -20,18 +20,17 @@ function calculate() {
     expression = expression.replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)');
     expression = expression.replace(/%/g, '/100');
 
-    expression = expression.replace(/cos\(([^)]+)\)/g, 'Math.cos(toRadians($1))');
-    expression = expression.replace(/sin\(([^)]+)\)/g, 'Math.sin(toRadians($1))');
-    expression = expression.replace(/tan\(([^)]+)\)/g, 'Math.tan(toRadians($1))');
+    expression = expression.replace(/cos\(([^)]+)\)/g, 'Math.cos($1)');
+    expression = expression.replace(/sin\(([^)]+)\)/g, 'Math.sin($1)');
+    expression = expression.replace(/tan\(([^)]+)\)/g, 'Math.tan($1)');
 
-    expression = expression.replace(/cosh\(([^)]+)\)/g, 'Math.cosh(toRadians($1))');
-    expression = expression.replace(/sinh\(([^)]+)\)/g, 'Math.sinh(toRadians($1))');
-    expression = expression.replace(/tanh\(([^)]+)\)/g, 'Math.tanh(toRadians($1))');
+    expression = expression.replace(/cosh\(([^)]+)\)/g, 'Math.cosh($1)');
+    expression = expression.replace(/sinh\(([^)]+)\)/g, 'Math.sinh($1)');
+    expression = expression.replace(/tanh\(([^)]+)\)/g, 'Math.tanh($1)');
 
     expression = expression.replace(/e/g, 'Math.E');
     expression = expression.replace(/π/g, 'Math.PI');
-    expression = expression.replace(/ln\(/g, 'Math.LN10(');
-    expression = expression.replace(/log\(/g, 'Math.log(');
+    expression = expression.replace(/log\(([^)]+)\)/g, 'Math.log10($1)');
 
     expression = expression.replace(/(\d+)!/g, 'fatorial($1)');
 
