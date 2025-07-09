@@ -14,7 +14,7 @@
                 <div>
                     <ul class="nav">
                         <li><a class="nav-link" href="../index.html">Início</a></li>
-                        <li><a class="nav-link" href="/paginas/avancada.html">Científica</a></li>
+                        <li><a class="nav-link" href="/paginas/avancada.html">Avançada</a></li>
                         <li><a class="nav-link" href="/paginas/financeira.html">Financeira</a></li>
                         <li><a class="nav-link" href="/paginas/grafica.html">Gráfica</a></li>
                     </ul>
@@ -34,11 +34,11 @@
                     <button class="btn btn-light" onclick="append('/')">/</button>
                 </div>
                 <div class="col-6">
+                    <button class="btn btn-light" onclick="append('cos(')">cos</button>
+                    <button class="btn btn-light" onclick="append('sin(')">sin</button>
+                    <button class="btn btn-light" onclick="append('tan(')">tan</button>
                     <button class="btn btn-light" onclick="append('(')">(</button>
                     <button class="btn btn-light" onclick="append(')')">)</button>
-                    <button class="btn btn-light" onclick="">x</button>
-                    <button class="btn btn-light" onclick="">π</button>
-                    <button class="btn btn-light" onclick="">e</button>
                 </div>
             </div>
 
@@ -51,9 +51,9 @@
                     <button class="btn btn-light" onclick="append('^')">^</button>
                 </div>
                 <div class="col-6">
-                    <button class="btn btn-light" onclick="">sin</button>
-                    <button class="btn btn-light" onclick="">cos</button>
-                    <button class="btn btn-light" onclick="">tan</button>
+                    <button class="btn btn-light" onclick="append('cosh(')">cosh</button>
+                    <button class="btn btn-light" onclick="append('sinh(')">sinh</button>
+                    <button class="btn btn-light" onclick="append('tanh(')">tanh</button>
                 </div>
             </div>
 
@@ -66,9 +66,9 @@
                     <button class="btn btn-light" onclick="append('√')">&radic;</button>
                 </div>
                 <div class="col-6">
-                    <button class="btn btn-light" onclick="">sinh</button>
-                    <button class="btn btn-light" onclick="">cosh</button>
-                    <button class="btn btn-light" onclick="">tanh</button>
+                    <button class="btn btn-light" onclick="">x</button>
+                    <button class="btn btn-light" onclick="append('π')">&pi;</button>
+                    <button class="btn btn-light" onclick="append('e')">e</button>
                 </div>
             </div>
 
@@ -81,8 +81,7 @@
                     <button class="btn btn-success" onclick="calculate()">=</button>
                 </div>
                 <div class="col-6">
-                    <button class="btn btn-light" onclick="">log</button>
-                    <button class="btn btn-light" onclick="">ln</button>
+                    <button class="btn btn-light" onclick="append('log(')">log</button>
                     <button class="btn btn-light" onclick="">exp</button>
                 </div>
             </div>
