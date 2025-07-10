@@ -66,7 +66,7 @@
                     <button class="btn btn-light" onclick="append('√')">&radic;</button>
                 </div>
                 <div class="col-6">
-                    <button class="btn btn-light" onclick="">x</button>
+                    <button class="btn btn-light" onclick="append('x')">x</button>
                     <button class="btn btn-light" onclick="append('π')">&pi;</button>
                     <button class="btn btn-light" onclick="append('e')">e</button>
                 </div>
@@ -85,9 +85,20 @@
                     <button class="btn btn-light" onclick="">exp</button>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <button class="btn btn-primary" id="plotarGrafico" onclick="plotarGrafico()">Plotar Gráfico</button>
+                </div>
+            </div>
         </section>
+
+        <div class="container my-5">
+            <canvas id="grafico" class="bg-white" style="display:none; width: 100%; max-width: 800px; height: 400px; margin: 0 auto;"></canvas>
+        </div>
+
     </main>
 
-    <script src="../js/calc-financeira.js"></script>
+    <script src="../js/calc-grafica.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
