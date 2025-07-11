@@ -25,13 +25,14 @@
     <main>
         <section id="calc-avancada" class="container text-center bg-white py-5 rounded shadow">
             <input class="mb-3 w-100" id="display" disabled />
+            <button class="btn btn-info" onclick="alterarModoAngulo()">Rad/Deg: <span id="modoAngulo">Rad</span></button>
             <div class="row mb-1">
                 <div class="col-6">
-                    <button class="btn btn-danger" onclick="clearDisplay()">C</button>
                     <button class="btn btn-light" onclick="append('7')">7</button>
                     <button class="btn btn-light" onclick="append('8')">8</button>
                     <button class="btn btn-light" onclick="append('9')">9</button>
                     <button class="btn btn-light" onclick="append('/')">/</button>
+                    <button class="btn btn-danger" onclick="clearDisplay()">C</button>
                 </div>
                 <div class="col-6">
                     <button class="btn btn-light" onclick="append('cos(')">cos</button>
