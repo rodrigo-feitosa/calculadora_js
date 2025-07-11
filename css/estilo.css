@@ -29,4 +29,5 @@ body {
 .btn {
     border: 2px solid #000;
     border-radius: 6px;
+    min-width: 50px;
 }
