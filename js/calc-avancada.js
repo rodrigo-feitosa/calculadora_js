@@ -9,6 +9,11 @@ function clearDisplay() {
     display.value = '';
 }
 
+function backspace() {
+    let display = document.getElementById('display');
+    display.value = display.value.slice(0, -1);
+}
+
 function toRadians(degrees) {
     return degrees * Math.PI / 180;
 }
