@@ -1,5 +1,6 @@
 const display = document.getElementById('display');
 let angleMode = 'rad';
+let ultimoResultado = null;
 
 function append(value) {
     display.value += value;
@@ -56,6 +57,8 @@ function calculate() {
     try {
         const result = eval(expression);
         document.getElementById('display').value = result;
+
+        ultimoResultado = result;
     } catch (e) {
         document.getElementById('display').value = 'Erro';
     }
@@ -66,4 +69,14 @@ function fatorial(n) {
     if (n < 0) return NaN;
     if (n === 0) return 1;
     return n * fatorial(n - 1);
+}
+
+function armazenarUltimoResultado() {
+    return ultimoResultado;
+}
+
+function usarUltimoResultado() {
+    if (ultimoResultado !== null) {
+        display.value += ultimoResultado;
+    }
 }

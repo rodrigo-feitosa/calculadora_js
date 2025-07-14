@@ -1,4 +1,5 @@
 const display = document.getElementById('display');
+let ultimoResultado = null;
 
 function append(value) {
     display.value += value;
@@ -23,8 +24,21 @@ function calculate() {
     try {
         const result = eval(expression);
         document.getElementById('display').value = result;
+
+        ultimoResultado = result;
     } catch (e) {
         document.getElementById('display').value = 'Erro';
+    }   
+}
+
+function armazenarUltimoResultado() {
+    return ultimoResultado;
+}
+
+function usarUltimoResultado() {
+    if (ultimoResultado !== null) {
+        display.value += ultimoResultado;
     }
 }
+
 

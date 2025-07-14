@@ -27,11 +27,12 @@
             <input class="mb-3 w-100" id="display" disabled />
             <div class="row mb-1">
                 <div class="col-6">
+                    <button class="btn btn-danger" onclick="clearDisplay()">C</button>
                     <button class="btn btn-light" onclick="append('7')">7</button>
                     <button class="btn btn-light" onclick="append('8')">8</button>
                     <button class="btn btn-light" onclick="append('9')">9</button>
                     <button class="btn btn-light" onclick="append('/')">/</button>
-                    <button class="btn btn-danger" onclick="clearDisplay()">C</button>
+                    <button class="btn btn-light" onclick="append('√')">&radic;</button>
                 </div>
                 <div class="col-6">
                     <button class="btn btn-light" onclick="append('(')">(</button>
@@ -43,6 +44,7 @@
 
             <div class="row mb-1">
                 <div class="col-6">
+                    <button class="btn btn-warning" onclick="backspace()">⌫</button>
                     <button class="btn btn-light" onclick="append('4')">4</button>
                     <button class="btn btn-light" onclick="append('5')">5</button>
                     <button class="btn btn-light" onclick="append('6')">6</button>
@@ -56,11 +58,12 @@
 
             <div class="row mb-1">   
                 <div class="col-6">
+                    <button class="btn btn-light" onclick="usarUltimoResultado()">Ans</button>
                     <button class="btn btn-light" onclick="append('1')">1</button>
                     <button class="btn btn-light" onclick="append('2')">2</button>
                     <button class="btn btn-light" onclick="append('3')">3</button>
                     <button class="btn btn-light" onclick="append('-')">-</button>
-                    <button class="btn btn-light" onclick="append('√')">&radic;</button>
+                    <button class="btn btn-light" onclick="append('+')">+</button>
                 </div>
                 <div class="col-6">
                     <button id="abrirModalJurosCompostos" class="btn btn-light">Juros compostos </button>
@@ -70,10 +73,10 @@
             <div class="row">
                 <div class="col-6">
                     <button class="btn btn-light" onclick="append('0')">0</button>
+                    <button class="btn btn-light" onclick="append('00')">00</button>
                     <button class="btn btn-light" onclick="append('.')">.</button>
                     <button class="btn btn-light" onclick="append('%')">%</button>
-                    <button class="btn btn-light" onclick="append('+')">+</button>
-                    <button class="btn btn-success" onclick="calculate()">=</button>
+                    <button class="btn btn-success btn-igual" onclick="calculate()">=</button>
                 </div>
             </div>
         </section>

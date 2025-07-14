@@ -1,4 +1,5 @@
 const display = document.getElementById('display');
+let ultimoResultado = null;
 let myChart = null;
 let modoAngulo = 'Rad';
 
@@ -64,6 +65,8 @@ function calculate() {
         const result = eval(expression);
         if (typeof result === 'number' && isFinite(result)) {
             document.getElementById('display').value = result;
+
+            ultimoResultado = result;
         } else {
             document.getElementById('display').value = 'Erro';
         }
@@ -195,4 +198,14 @@ function plotarGrafico() {
             }
         }
     });
+}
+
+function armazenarUltimoResultado() {
+    return ultimoResultado;
+}
+
+function usarUltimoResultado() {
+    if (ultimoResultado !== null) {
+        display.value += ultimoResultado;
+    }
 }

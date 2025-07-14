@@ -4,22 +4,17 @@ body {
 
 #display {
     height: 50px;
+    min-width: 300px;
+    max-width: 500px;
 }
 
-#btn_apaga {
+.btn-igual {
     width: 100px;
+    margin-left: 0.5rem;
 }
 
-#calc-basica {
-    max-width: 300px;
-}
-
-#calc-avancada {
-    max-width: 600px;
-}
-
-#calc-financeira {
-    max-width: 600px;
+#calc-basica, #calc-avancada, #calc-financeira {
+    max-width: 700px;
 }
 
 .nav .nav-link:hover {
