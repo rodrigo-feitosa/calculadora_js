@@ -27,44 +27,44 @@
             <input class="mb-3" id="display" disabled />
             <div class="row mb-1">
                 <div class="col">
-                    <button class="btn btn-danger" onclick="clearDisplay()">C</button>
-                    <button class="btn btn-light" onclick="append('7')">7</button>
-                    <button class="btn btn-light" onclick="append('8')">8</button>
-                    <button class="btn btn-light" onclick="append('9')">9</button>
-                    <button class="btn btn-light" onclick="append('/')">/</button>
-                    <button class="btn btn-light" onclick="append('√')">&radic;</button>
+                    <button class="btn btn-danger" id="btnLimparDisplay">C</button>
+                    <button class="btn btn-light" data-value="7">7</button>
+                    <button class="btn btn-light" data-value="8">8</button>
+                    <button class="btn btn-light" data-value="9">9</button>
+                    <button class="btn btn-light" data-value="/">/</button>
+                    <button class="btn btn-light" data-value="√">&radic;</button>
                 </div>
             </div>
 
             <div class="row mb-1">
                 <div class="col">
-                    <button class="btn btn-warning" onclick="backspace()">⌫</button>
-                    <button class="btn btn-light" onclick="append('4')">4</button>
-                    <button class="btn btn-light" onclick="append('5')">5</button>
-                    <button class="btn btn-light" onclick="append('6')">6</button>
-                    <button class="btn btn-light" onclick="append('*')">*</button>
-                    <button class="btn btn-light" onclick="append('^')">^</button>
+                    <button class="btn btn-warning" id="btnApagar">⌫</button>
+                    <button class="btn btn-light" data-value="4">4</button>
+                    <button class="btn btn-light" data-value="5">5</button>
+                    <button class="btn btn-light" data-value="6">6</button>
+                    <button class="btn btn-light" data-value="*">*</button>
+                    <button class="btn btn-light" data-value="^">^</button>
                 </div>
             </div>
 
             <div class="row mb-1">   
                 <div class="col">
-                    <button class="btn btn-light" onclick="usarUltimoResultado()">Ans</button>
-                    <button class="btn btn-light" onclick="append('1')">1</button>
-                    <button class="btn btn-light" onclick="append('2')">2</button>
-                    <button class="btn btn-light" onclick="append('3')">3</button>
-                    <button class="btn btn-light" onclick="append('-')">-</button>
-                    <button class="btn btn-light" onclick="append('+')">+</button>
+                    <button class="btn btn-light" id="btnUltimoResultado">Ans</button>
+                    <button class="btn btn-light" data-value="1">1</button>
+                    <button class="btn btn-light" data-value="2">2</button>
+                    <button class="btn btn-light" data-value="3">3</button>
+                    <button class="btn btn-light" data-value="-">-</button>
+                    <button class="btn btn-light" data-value="+">+</button>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-light" onclick="append('0')">0</button>
-                    <button class="btn btn-light" onclick="append('00')">00</button>
-                    <button class="btn btn-light" onclick="append('.')">.</button>
-                    <button class="btn btn-light" onclick="append('%')">%</button>
-                    <button class="btn btn-success btn-igual" onclick="calculate()">=</button>
+                    <button class="btn btn-light" data-value="0">0</button>
+                    <button class="btn btn-light" data-value="00">00</button>
+                    <button class="btn btn-light" data-value=".">.</button>
+                    <button class="btn btn-light" data-value="%">%</button>
+                    <button class="btn btn-success btn-igual" id="btnIgual">=</button>
                 </div>
             </div>
         </section>
