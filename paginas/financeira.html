@@ -27,56 +27,56 @@
             <input class="mb-3 w-100" id="display" disabled />
             <div class="row mb-1">
                 <div class="col-6">
-                    <button class="btn btn-danger" onclick="clearDisplay()">C</button>
-                    <button class="btn btn-light" onclick="append('7')">7</button>
-                    <button class="btn btn-light" onclick="append('8')">8</button>
-                    <button class="btn btn-light" onclick="append('9')">9</button>
-                    <button class="btn btn-light" onclick="append('/')">/</button>
-                    <button class="btn btn-light" onclick="append('√')">&radic;</button>
+                    <button class="btn btn-danger" id="btnLimparDisplay">C</button>
+                    <button class="btn btn-light" data-value="7">7</button>
+                    <button class="btn btn-light" data-value="8">8</button>
+                    <button class="btn btn-light" data-value="9">9</button>
+                    <button class="btn btn-light" data-value="/">/</button>
+                    <button class="btn btn-light" data-value="√">&radic;</button>
                 </div>
                 <div class="col-6">
-                    <button class="btn btn-light" onclick="append('(')">(</button>
-                    <button class="btn btn-light" onclick="append(')')">)</button>
-                    <button id="abrirModalValorPresente" class="btn btn-light">VP</button>
-                    <button id="abrirModalValorFuturo" class="btn btn-light">VF</button>
+                    <button class="btn btn-light" data-value="(">(</button>
+                    <button class="btn btn-light" data-value=")">)</button>
+                    <button id="btnAbrirValorPresente" class="btn btn-light">VP</button>
+                    <button id="btnAbrirValorFuturo" class="btn btn-light">VF</button>
                 </div>
             </div>
 
             <div class="row mb-1">
                 <div class="col-6">
-                    <button class="btn btn-warning" onclick="backspace()">⌫</button>
-                    <button class="btn btn-light" onclick="append('4')">4</button>
-                    <button class="btn btn-light" onclick="append('5')">5</button>
-                    <button class="btn btn-light" onclick="append('6')">6</button>
-                    <button class="btn btn-light" onclick="append('*')">*</button>
-                    <button class="btn btn-light" onclick="append('^')">^</button>
+                    <button class="btn btn-warning" id="btnApagar">⌫</button>
+                    <button class="btn btn-light" data-value="4">4</button>
+                    <button class="btn btn-light" data-value="5">5</button>
+                    <button class="btn btn-light" data-value="6">6</button>
+                    <button class="btn btn-light" data-value="*">*</button>
+                    <button class="btn btn-light" data-value="^">^</button>
                 </div>
                 <div class="col-6">
-                    <button id="abrirModalJurosSimples" class="btn btn-light">Juros simples</button>
+                    <button id="btnAbrirJurosSimples" class="btn btn-light">Juros simples</button>
                 </div>
             </div>
 
             <div class="row mb-1">   
                 <div class="col-6">
-                    <button class="btn btn-light" onclick="usarUltimoResultado()">Ans</button>
-                    <button class="btn btn-light" onclick="append('1')">1</button>
-                    <button class="btn btn-light" onclick="append('2')">2</button>
-                    <button class="btn btn-light" onclick="append('3')">3</button>
-                    <button class="btn btn-light" onclick="append('-')">-</button>
-                    <button class="btn btn-light" onclick="append('+')">+</button>
+                    <button class="btn btn-light" id="btnUltimoResultado">Ans</button>
+                    <button class="btn btn-light" data-value="1">1</button>
+                    <button class="btn btn-light" data-value="2">2</button>
+                    <button class="btn btn-light" data-value="3">3</button>
+                    <button class="btn btn-light" data-value="-">-</button>
+                    <button class="btn btn-light" data-value="+">+</button>
                 </div>
                 <div class="col-6">
-                    <button id="abrirModalJurosCompostos" class="btn btn-light">Juros compostos </button>
+                    <button id="btnAbrirJurosCompostos" class="btn btn-light">Juros compostos </button>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-6">
-                    <button class="btn btn-light" onclick="append('0')">0</button>
-                    <button class="btn btn-light" onclick="append('00')">00</button>
-                    <button class="btn btn-light" onclick="append('.')">.</button>
-                    <button class="btn btn-light" onclick="append('%')">%</button>
-                    <button class="btn btn-success btn-igual" onclick="calculate()">=</button>
+                    <button class="btn btn-light" data-value="0">0</button>
+                    <button class="btn btn-light" data-value="00">00</button>
+                    <button class="btn btn-light" data-value=".">.</button>
+                    <button class="btn btn-light" data-value="%">%</button>
+                    <button class="btn btn-success btn-igual" id="btnIgual">=</button>
                 </div>
             </div>
         </section>
@@ -95,8 +95,8 @@
                 <label for="periodosVP">Períodos:</label>
                 <input type="number" id="periodosVP" class="form-control mb-2">
 
-                <button type="button" class="btn btn-primary" onclick="calcularValorPresente()">Calcular VP</button>
-                <button type="button" class="btn btn-secondary" id="fecharModalValorPresente">Fechar</button>
+                <button type="button" class="btn btn-primary" id="btnCalcularValorPresente">Calcular VP</button>
+                <button type="button" class="btn btn-secondary" id="btnFecharValorPresente">Fechar</button>
             </form>
         </div>
     </div>
@@ -114,8 +114,8 @@
                 <label for="periodosVF">Períodos:</label>
                 <input type="number" id="periodosVF" class="form-control mb-2">
 
-                <button type="button" class="btn btn-primary" onclick="calcularValorFuturo()">Calcular VF</button>
-                <button type="button" class="btn btn-secondary" id="fecharModalValorFuturo">Fechar</button>
+                <button type="button" class="btn btn-primary" id="btnCalcularValorFuturo">Calcular VF</button>
+                <button type="button" class="btn btn-secondary" id="btnFecharValorFuturo">Fechar</button>
             </form>
         </div>
     </div>
@@ -133,8 +133,8 @@
                 <label for="periodosSimples">Períodos:</label>
                 <input type="number" id="periodosSimples" class="form-control mb-2">
 
-                <button type="button" class="btn btn-primary" onclick="calcularJurosSimples()">Calcular Juros Simples</button>
-                <button type="button" class="btn btn-secondary" id="fecharModalJurosSimples">Fechar</button>
+                <button type="button" class="btn btn-primary" id="btnCalcularJurosSimples">Calcular Juros Simples</button>
+                <button type="button" class="btn btn-secondary" id="btnFecharJurosSimples">Fechar</button>
             </form>
         </div>
     </div>
@@ -152,11 +152,18 @@
                 <label for="periodosCompostos">Períodos:</label>
                 <input type="number" id="periodosCompostos" class="form-control mb-2">
 
-                <button type="button" class="btn btn-primary" onclick="calcularJurosCompostos()">Calcular Juros Compostos</button>
-                <button type="button" class="btn btn-secondary" id="fecharModalJurosCompostos">Fechar</button>
+                <button type="button" class="btn btn-primary" id="btnCalcularJurosCompostos">Calcular Juros Compostos</button>
+                <button type="button" class="btn btn-secondary" id="btnFecharJurosCompostos">Fechar</button>
             </form>
         </div>
     </div>
-    <script src="../js/calc-financeira.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            inicializarCalculadora(CalculadoraFinanceira);
+        });
+    </script>
+
+    <script src="../js/calc.js"></script>
 </body>
 </html>

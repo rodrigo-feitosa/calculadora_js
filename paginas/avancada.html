@@ -39,7 +39,7 @@
                         <button class="btn btn-light" data-value="8">8</button>
                         <button class="btn btn-light" data-value="9">9</button>
                         <button class="btn btn-light" data-value="/">/</button>
-                        <button class="btn btn-light" data-value="√">√</button>
+                        <button class="btn btn-light" data-value="√">&radic;</button>
                     </div>
                     <div class="col-6">
                         <button class="btn btn-light" data-value="cos(">cos</button>
@@ -96,6 +96,12 @@
             </div>
         </section>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            inicializarCalculadora(CalculadoraAvancada);
+        });
+    </script>
 
     <script src="../js/calc.js"></script>
 
