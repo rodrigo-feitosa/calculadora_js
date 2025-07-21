@@ -91,6 +91,7 @@ class CalculadoraAvancada extends CalculadoraBasica {
         expression = expression.replace(/e/g, 'Math.E');
         expression = expression.replace(/π/g, 'Math.PI');
         expression = expression.replace(/log\(([^)]+)\)/g, 'Math.log10($1)');
+        expression = expression.replace(/ln\(([^)]+)\)/g, 'Math.log($1)');
         expression = expression.replace(/(\d+)!/g, (_, val) => this.fatorial(val));
         expression = expression.replace(/(\d+)x⁻¹/g, '1/$1');
 
@@ -200,6 +201,140 @@ class CalculadoraFinanceira extends CalculadoraAvancada {
     }
 }
 
+class CalculadoraGrafica extends CalculadoraAvancada {
+    constructor (displayId) {
+        super(displayId);
+
+        this.myChart = null;
+    }
+
+    plotarGrafico() {
+        let expression = this.display.value;
+        const canvas = document.getElementById('grafico');
+        const ctx = canvas.getContext('2d');
+
+        // Mostrar o canvas
+        canvas.style.display = 'block';
+        
+        // Destruir gráfico anterior, se existir
+        if (this.myChart) {
+            this.myChart.destroy();
+        }
+
+        // Preparar dados para o gráfico
+        const xValues = [];
+        const yValues = [];
+        const step = 0.1;
+        const xMin = -10;
+        const xMax = 10;
+
+        // Substituições para a expressão
+        let plotExpression = expression
+            .replace(/\^/g, '**')
+            .replace(/√/g, 'Math.sqrt')
+            .replace(/%/g, '/100')
+            .replace(/e/g, 'Math.E')
+            .replace(/π/g, 'Math.PI')
+            .replace(/log\(/g, 'Math.log10(')
+            .replace(/ln\(/g, 'Math.log(');
+
+        // Funções trigonométricas com conversão de ângulo
+        if (this.modoAngulo === 'Deg') {
+            plotExpression = plotExpression
+                .replace(/cos\(([^)]+)\)/g, 'Math.cos(toRadians($1))')
+                .replace(/sin\(([^)]+)\)/g, 'Math.sin(toRadians($1))')
+                .replace(/tan\(([^)]+)\)/g, 'Math.tan(toRadians($1))')
+                .replace(/cosh\(([^)]+)\)/g, 'Math.cosh(toRadians($1))')
+                .replace(/sinh\(([^)]+)\)/g, 'Math.sinh(toRadians($1))')
+                .replace(/tanh\(([^)]+)\)/g, 'Math.tanh(toRadians($1))');
+        } else {
+            plotExpression = plotExpression
+                .replace(/cos\(([^)]+)\)/g, 'Math.cos($1)')
+                .replace(/sin\(([^)]+)\)/g, 'Math.sin($1)')
+                .replace(/tan\(([^)]+)\)/g, 'Math.tan($1)')
+                .replace(/cosh\(([^)]+)\)/g, 'Math.cosh($1)')
+                .replace(/sinh\(([^)]+)\)/g, 'Math.sinh($1)')
+                .replace(/tanh\(([^)]+)\)/g, 'Math.tanh($1)');
+        }
+
+        // Gerar valores de x e y
+        for (let x = xMin; x <= xMax; x += step) {
+            try {
+                // Substituir 'x' na expressão pelo valor atual
+                let evalExpression = plotExpression.replace(/(\b)x(\b|$)/g, `(${x})`);
+                let y = eval(evalExpression);
+                if (typeof y === 'number' && isFinite(y)) {
+                    xValues.push(parseFloat(x.toFixed(2)));
+                    yValues.push(y);
+                }
+            } catch (e) {
+                // Ignorar erros para valores específicos
+            }
+        }
+
+        // Verificar se há dados válidos para plotar
+        if (xValues.length === 0) {
+            alert('Não foi possível plotar o gráfico. Verifique a expressão.');
+            canvas.style.display = 'none';
+            return;
+        }
+
+        // Configurar o gráfico com Chart.js
+        this.myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: xValues,
+                datasets: [{
+                    label: `f(x) = ${expression}`,
+                    data: yValues,
+                    borderColor: '#4bc0c0',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 2,
+                    fill: false,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: 20
+                },
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        title: {
+                            display: true,
+                            text: 'x'
+                        },
+                        ticks: {
+                            stepSize: 1
+                        },
+                        min: xMin,
+                        max: xMax
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'f(x)'
+                        },
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    }
+}
+
 function inicializarCalculadora(CalculadoraClasse, displayId = 'display') {
     const calc = new CalculadoraClasse(displayId);
 
@@ -229,7 +364,6 @@ function inicializarCalculadora(CalculadoraClasse, displayId = 'display') {
         calc.alterarModoAngulo?.();
     });
 
-    // Se for uma calculadora financeira
     if (calc instanceof CalculadoraFinanceira) {
         document.getElementById('btnAbrirValorPresente')?.addEventListener('click', () => {
             calc.abrirModalValorPresente();
@@ -277,6 +411,12 @@ function inicializarCalculadora(CalculadoraClasse, displayId = 'display') {
 
         document.getElementById('btnCalcularJurosCompostos')?.addEventListener('click', () => {
             calc.calcularJurosCompostos();
+        });
+    }
+
+    if (calc instanceof CalculadoraGrafica) {
+        document.getElementById('btnPlotarGrafico')?.addEventListener('click', () => {
+            calc.plotarGrafico();
         });
     }
 }
