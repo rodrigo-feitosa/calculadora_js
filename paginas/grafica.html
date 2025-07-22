@@ -89,15 +89,35 @@
                     <button class="btn btn-success btn-igual" id="btnIgual">=</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 mt-3">
-                    <button class="btn btn-primary" id="btnPlotarGrafico">Plotar Gráfico</button>
-                </div>
-            </div>
         </section>
 
+        <div class="row my-3 justify-content-center">
+            <div class="col-auto">
+                <label for="inputXMin" class="form-label">X Min</label>
+                <input type="number" step="any" id="inputXMin" class="form-control" value="-100">
+            </div>
+            <div class="col-auto">
+                <label for="inputXMax" class="form-label">X Max</label>
+                <input type="number" step="any" id="inputXMax" class="form-control" value="100">
+            </div>
+            <div class="col-auto">
+                <label for="inputYMin" class="form-label">Y Min</label>
+                <input type="number" step="any" id="inputYMin" class="form-control" placeholder="Auto">
+            </div>
+            <div class="col-auto">
+                <label for="inputYMax" class="form-label">Y Max</label>
+                <input type="number" step="any" id="inputYMax" class="form-control" placeholder="Auto">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <button class="btn btn-primary" id="btnPlotarGrafico">Plotar Gráfico</button>
+            </div>
+        </div>
+
+
         <div class="container my-5">
-            <canvas id="grafico" class="bg-white" style="display:none; width: 100%; max-width: 800px; height: 400px; margin: 0 auto;"></canvas>
+            <canvas id="grafico" class="bg-white" style="display:none; width: 100%; max-width: 1000px; height: 600px; margin: 0 auto;"></canvas>
         </div>
     </main>
 
@@ -109,5 +129,7 @@
 
     <script src="../js/calc.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.2.0/dist/chartjs-plugin-zoom.min.js"></script>
+
 </body>
 </html>

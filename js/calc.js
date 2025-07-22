@@ -221,12 +221,25 @@ class CalculadoraGrafica extends CalculadoraAvancada {
             this.myChart.destroy();
         }
 
+        // Pegar limites dos inputs
+        const xMin = parseFloat(document.getElementById('inputXMin').value);
+        const xMax = parseFloat(document.getElementById('inputXMax').value);
+        const yMinInput = document.getElementById('inputYMin').value;
+        const yMaxInput = document.getElementById('inputYMax').value;
+
+        const yMin = yMinInput !== '' ? parseFloat(yMinInput) : null;
+        const yMax = yMaxInput !== '' ? parseFloat(yMaxInput) : null;
+
+        // Validação básica dos limites X
+        if (isNaN(xMin) || isNaN(xMax) || xMin >= xMax) {
+            alert('Por favor, informe limites válidos para X (xMin < xMax).');
+            return;
+        }
+
         // Preparar dados para o gráfico
         const xValues = [];
         const yValues = [];
         const step = 0.1;
-        const xMin = -10;
-        const xMax = 10;
 
         // Substituições para a expressão
         let plotExpression = expression
@@ -304,23 +317,19 @@ class CalculadoraGrafica extends CalculadoraAvancada {
                     x: {
                         type: 'linear',
                         position: 'bottom',
+                        min: xMin,
+                        max: xMax,
                         title: {
                             display: true,
                             text: 'x'
-                        },
-                        ticks: {
-                            stepSize: 1
-                        },
-                        min: xMin,
-                        max: xMax
+                        }
                     },
                     y: {
+                        min: yMin,
+                        max: yMax,
                         title: {
                             display: true,
                             text: 'f(x)'
-                        },
-                        ticks: {
-                            stepSize: 1
                         }
                     }
                 },
@@ -328,6 +337,21 @@ class CalculadoraGrafica extends CalculadoraAvancada {
                     legend: {
                         display: true,
                         position: 'top'
+                    },
+                    zoom: {
+                        pan: {
+                            enabled: true,
+                            mode: 'xy'
+                        },
+                        zoom: {
+                            wheel: {
+                                enabled: true
+                            },
+                            pinch: {
+                                enabled: true
+                            },
+                            mode: 'xy'
+                        }
                     }
                 }
             }
