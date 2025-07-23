@@ -2,6 +2,7 @@ class CalculadoraBasica {
     constructor(display) {
         this.display = document.getElementById(display);
         this.ultimoResultado = null;
+        this.historico = [];
     }
 
     append(value) {
@@ -27,9 +28,37 @@ class CalculadoraBasica {
             const result = eval(expression);
             this.display.value = result;
             this.ultimoResultado = result;
+
+            this.adicionarHistorico(`${expression} = ${result}`);
         } catch (e) {
             this.display.value = 'Erro';
         }
+    }
+
+    abrirModalHistorico() {
+        const modal = document.getElementById('modalHistorico');
+        modal.style.display = 'block';
+    }
+
+    fecharModalHistorico() {
+        const modal = document.getElementById('modalHistorico');
+        modal.style.display = 'none';
+    }
+
+    adicionarHistorico(calculo) {
+        const ul = document.getElementById('historico');
+        ul.innerHTML = '';
+    
+        this.historico.unshift(calculo);
+        if (this.historico.length > 10) {
+            this.historico.pop();
+        }
+
+        this.historico.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            ul.appendChild(li);
+        });
     }
 
     armazenarUltimoResultado() {
@@ -99,6 +128,8 @@ class CalculadoraAvancada extends CalculadoraBasica {
             const result = eval(expression);
             this.display.value = result;
             this.ultimoResultado = result;
+
+            this.adicionarHistorico(`${expression} = ${result}`);
         } catch (e) {
             this.display.value = 'Erro';
         }
@@ -386,6 +417,14 @@ function inicializarCalculadora(CalculadoraClasse, displayId = 'display') {
 
     document.getElementById('btnModoAngulo')?.addEventListener('click', () => {
         calc.alterarModoAngulo?.();
+    });
+
+    document.getElementById('btnAbrirHistorico')?.addEventListener('click', () => {
+        calc.abrirModalHistorico();
+    });
+
+    document.getElementById('btnFecharHistorico')?.addEventListener('click', () => {
+        calc.fecharModalHistorico();
     });
 
     if (calc instanceof CalculadoraFinanceira) {

@@ -24,7 +24,12 @@
     </div>
     <main>
         <section id="calc-basica" class="container text-center bg-white py-5 rounded shadow">
-            <input class="mb-3" id="display" disabled />
+            <div class="text-center mb-3">
+                <input class="mb-3" id="display" disabled />
+                <button class="btn btn-light me-2" id="btnAbrirHistorico" style="height: 50px;">
+                    &#128339;<span id="simboloHistorico"></span>
+                </button>
+            </div>
             <div class="row mb-1">
                 <div class="col">
                     <button class="btn btn-danger" id="btnLimparDisplay">C</button>
@@ -69,6 +74,14 @@
             </div>
         </section>
     </main>
+
+    <div id="modalHistorico" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);">
+        <div style="background:white; margin:10% auto; padding:20px; width:500px; position:relative;">
+            <h2>Histórico</h2>
+            <ul id="historico"></ul>
+            <button type="button" class="btn btn-secondary" id="btnFecharHistorico">Fechar</button>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
