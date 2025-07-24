@@ -4,13 +4,15 @@ body {
 
 #display {
     height: 50px;
-    min-width: 300px;
-    max-width: 500px;
 }
 
 .btn-igual {
     width: 100px;
     margin-left: 0.5rem;
+}
+
+.d-sm-none .btn-igual {
+    width: 150px;
 }
 
 #calc-basica, #calc-avancada, #calc-financeira {
@@ -22,9 +24,13 @@ body {
 }
 
 .btn {
-    border: 2px solid #000;
+    border: 1px solid #000;
     border-radius: 6px;
     min-width: 50px;
+}
+
+.d-sm-none .btn {
+    min-width: 75px;
 }
 
 #historico {

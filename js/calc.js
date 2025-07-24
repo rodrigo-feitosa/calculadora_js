@@ -399,20 +399,29 @@ function inicializarCalculadora(CalculadoraClasse, displayId = 'display') {
         });
     });
 
-    document.getElementById('btnIgual')?.addEventListener('click', () => {
-        calc.calculate();
+    document.querySelectorAll('.btn-igual').forEach(btn => {
+        btn.addEventListener('click', () => {
+            calc.calculate();
+        });
     });
 
-    document.getElementById('btnLimparDisplay')?.addEventListener('click', () => {
-        calc.limparDisplay();
+    document.querySelectorAll('.btn-limpar-display').forEach(btn => {
+        btn.addEventListener('click', () => {
+            calc.limparDisplay();
+        });
     });
 
-    document.getElementById('btnApagar')?.addEventListener('click', () => {
-        calc.apagarDisplay();
+    
+    document.querySelectorAll('.btn-apagar').forEach(btn => {
+        btn.addEventListener('click', () => {
+            calc.apagarDisplay();
+        });
     });
 
-    document.getElementById('btnUltimoResultado')?.addEventListener('click', () => {
-        calc.usarUltimoResultado?.();
+    document.querySelectorAll('.btn-ultimo-resultado').forEach(btn => {
+        btn.addEventListener('click', () => {
+           calc.usarUltimoResultado();
+        });
     });
 
     document.getElementById('btnModoAngulo')?.addEventListener('click', () => {
