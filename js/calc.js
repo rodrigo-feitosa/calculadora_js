@@ -437,58 +437,84 @@ function inicializarCalculadora(CalculadoraClasse, displayId = 'display') {
     });
 
     if (calc instanceof CalculadoraFinanceira) {
-        document.getElementById('btnAbrirValorPresente')?.addEventListener('click', () => {
-            calc.abrirModalValorPresente();
+        document.querySelectorAll('.btn-abrir-valor-presente').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.abrirModalValorPresente();
+            });
         });
 
-        document.getElementById('btnFecharValorPresente')?.addEventListener('click', () => {
-            calc.fecharModalValorPresente();
+        document.querySelectorAll('.btn-fechar-valor-presente').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.fecharModalValorPresente();
+            });
         });
 
-        document.getElementById('btnCalcularValorPresente')?.addEventListener('click', () => {
-            calc.calcularValorPresente();
+        document.querySelectorAll('.btn-calcular-valor-presente').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.calcularValorPresente();
+            });
         });
 
-        document.getElementById('btnAbrirValorFuturo')?.addEventListener('click', () => {
-            calc.abrirModalValorFuturo();
+        document.querySelectorAll('.btn-abrir-valor-futuro').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.abrirModalValorFuturo();
+            });
         });
 
-        document.getElementById('btnFecharValorFuturo')?.addEventListener('click', () => {
-            calc.fecharModalValorFuturo();
+        document.querySelectorAll('.btn-fechar-valor-futuro').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.fecharModalValorFuturo();
+            });
         });
 
-        document.getElementById('btnCalcularValorFuturo')?.addEventListener('click', () => {
-            calc.calcularValorFuturo();
+        document.querySelectorAll('.btn-calcular-valor-futuro').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.calcularValorFuturo();
+            });
         });
 
-        document.getElementById('btnAbrirJurosSimples')?.addEventListener('click', () => {
-            calc.abrirModalJurosSimples();
+        document.querySelectorAll('.btn-abrir-juros-simples').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.abrirModalJurosSimples();
+            });
         });
 
-        document.getElementById('btnFecharJurosSimples')?.addEventListener('click', () => {
-            calc.fecharModalJurosSimples();
+        document.querySelectorAll('.btn-fechar-juros-simples').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.fecharModalJurosSimples();
+            });
         });
 
-        document.getElementById('btnCalcularJurosSimples')?.addEventListener('click', () => {
-            calc.calcularJurosSimples();
+        document.querySelectorAll('btn-calcular-juros-simples').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.calcularJurosSimples();
+            });
         });
 
-        document.getElementById('btnAbrirJurosCompostos')?.addEventListener('click', () => {
-            calc.abrirModalJurosCompostos();
+        document.querySelectorAll('.btn-abrir-juros-compostos').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.abrirModalJurosCompostos();
+            });
         });
 
-        document.getElementById('btnFecharJurosCompostos')?.addEventListener('click', () => {
-            calc.fecharModalJurosCompostos();
+        document.querySelectorAll('.btn-fechar-juros-compostos').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.fecharModalJurosCompostos();
+            });
         });
 
-        document.getElementById('btnCalcularJurosCompostos')?.addEventListener('click', () => {
-            calc.calcularJurosCompostos();
+        document.querySelectorAll('btn-calcular-juros-compostos').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.calcularJurosCompostos();
+            });
         });
     }
 
     if (calc instanceof CalculadoraGrafica) {
-        document.getElementById('btnPlotarGrafico')?.addEventListener('click', () => {
-            calc.plotarGrafico();
+        document.querySelectorAll('.btn-plotar-grafico').forEach(btn => {
+            btn.addEventListener('click', () => {
+                calc.plotarGrafico();
+            });
         });
     }
 }

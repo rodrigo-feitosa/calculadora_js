@@ -23,102 +23,189 @@
         </header>
     </div>
     <main>
-        <section id="calc-avancada" class="container text-center bg-white py-5 rounded shadow">
+        <section id="calc-avancada" class="mx-auto text-center bg-white py-5 rounded shadow">
             <div class="text-center mb-3">
                 <div class="row align-items-start justify-content-center">
                     <button class="col-auto btn btn-info me-2" id="btnModoAngulo" style="height: 50px;">
                         Rad/Deg: <span id="modoAngulo">Rad</span>
                     </button>
-                    <input class="col-auto mb-3 me-1" id="display" disabled />
+                    <input class="col-auto mb-3 me-1" id="display" style="max-width: 200px;" disabled />
                     <button class="col-auto btn btn-light me-2" id="btnAbrirHistorico" style="height: 50px;">
                         &#128339;<span id="simboloHistorico"></span>
                     </button>
                 </div>
             </div>
-            <div class="row mb-1">
-                <div class="col-6">
-                    <button class="btn btn-danger btn-limoar-display">C</button>
-                    <button class="btn btn-light" data-value="7">7</button>
-                    <button class="btn btn-light" data-value="8">8</button>
-                    <button class="btn btn-light" data-value="9">9</button>
-                    <button class="btn btn-light" data-value="/">/</button>
-                    <button class="btn btn-light" data-value="√">&radic;</button>
+            <div class="container text-center d-none d-sm-block">
+                <div class="row mb-1">
+                    <div class="col-6">
+                        <button class="btn btn-danger btn-limpar-display">C</button>
+                        <button class="btn btn-light" data-value="7">7</button>
+                        <button class="btn btn-light" data-value="8">8</button>
+                        <button class="btn btn-light" data-value="9">9</button>
+                        <button class="btn btn-light" data-value="/">/</button>
+                        <button class="btn btn-light" data-value="√">&radic;</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-light" data-value="cos(">cos</button>
+                        <button class="btn btn-light" data-value="sin(">sin</button>
+                        <button class="btn btn-light" data-value="tan(">tan</button>
+                        <button class="btn btn-light" data-value="(">(</button>
+                        <button class="btn btn-light" data-value=")">)</button>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <button class="btn btn-light" data-value="cos(">cos</button>
-                    <button class="btn btn-light" data-value="sin(">sin</button>
-                    <button class="btn btn-light" data-value="tan(">tan</button>
-                    <button class="btn btn-light" data-value="(">(</button>
-                    <button class="btn btn-light" data-value=")">)</button>
+
+                <div class="row mb-1">
+                    <div class="col-6">
+                        <button class="btn btn-warning btn-apagar">⌫</button>
+                        <button class="btn btn-light" data-value="4">4</button>
+                        <button class="btn btn-light" data-value="5">5</button>
+                        <button class="btn btn-light" data-value="6">6</button>
+                        <button class="btn btn-light" data-value="*">*</button>
+                        <button class="btn btn-light" data-value="^">^</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-light" data-value="cosh(">cosh</button>
+                        <button class="btn btn-light" data-value="sinh(">sinh</button>
+                        <button class="btn btn-light" data-value="tanh(">tanh</button>
+                        <button class="btn btn-light" data-value="x">x</button>
+                    </div>
+                </div>
+
+                <div class="row mb-1">   
+                    <div class="col-6">
+                        <button class="btn btn-light btn-ultimo-resultado">Ans</button>
+                        <button class="btn btn-light" data-value="1">1</button>
+                        <button class="btn btn-light" data-value="2">2</button>
+                        <button class="btn btn-light" data-value="3">3</button>
+                        <button class="btn btn-light" data-value="-">-</button>
+                        <button class="btn btn-light" data-value="+">+</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-light" data-value="π">&pi;</button>
+                        <button class="btn btn-light" data-value="e">e</button>
+                        <button class="btn btn-light" data-value="log(">log</button>
+                        <button class="btn btn-light" data-value="ln(">ln</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <button class="btn btn-light" data-value="0">0</button>
+                        <button class="btn btn-light" data-value="00">00</button>
+                        <button class="btn btn-light" data-value=".">.</button>
+                        <button class="btn btn-light" data-value="%">%</button>
+                        <button class="btn btn-success btn-igual">=</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="row mb-1">
-                <div class="col-6">
-                    <button class="btn btn-warning btn-apagar">⌫</button>
-                    <button class="btn btn-light" data-value="4">4</button>
-                    <button class="btn btn-light" data-value="5">5</button>
-                    <button class="btn btn-light" data-value="6">6</button>
-                    <button class="btn btn-light" data-value="*">*</button>
-                    <button class="btn btn-light" data-value="^">^</button>
+            <div class="container text-center d-block d-sm-none">
+                <div class="row mb-1">
+                    <div class="col-12">
+                        <button class="btn btn-danger btn-limpar-display">C</button>
+                        <button class="btn btn-warning btn-apagar">⌫</button>
+                        <button class="btn btn-light" data-value="%">%</button>
+                        <button class="btn btn-light" data-value="/">/</button>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <button class="btn btn-light" data-value="cosh(">cosh</button>
-                    <button class="btn btn-light" data-value="sinh(">sinh</button>
-                    <button class="btn btn-light" data-value="tanh(">tanh</button>
-                    <button class="btn btn-light" data-value="x">x</button>
-                </div>
-            </div>
 
-            <div class="row mb-1">   
-                <div class="col-6">
-                    <button class="btn btn-light btn-ultimo-resultado">Ans</button>
-                    <button class="btn btn-light" data-value="1">1</button>
-                    <button class="btn btn-light" data-value="2">2</button>
-                    <button class="btn btn-light" data-value="3">3</button>
-                    <button class="btn btn-light" data-value="-">-</button>
-                    <button class="btn btn-light" data-value="+">+</button>
+                <div class="row mb-1">
+                    <div class="col-12">
+                        <button class="btn btn-light" data-value="7">7</button>
+                        <button class="btn btn-light" data-value="8">8</button>
+                        <button class="btn btn-light" data-value="9">9</button>
+                        <button class="btn btn-light" data-value="*">*</button>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <button class="btn btn-light" data-value="π">&pi;</button>
-                    <button class="btn btn-light" data-value="e">e</button>
-                    <button class="btn btn-light" data-value="log(">log</button>
-                    <button class="btn btn-light" data-value="ln(">ln</button>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-6">
-                    <button class="btn btn-light" data-value="0">0</button>
-                    <button class="btn btn-light" data-value="00">00</button>
-                    <button class="btn btn-light" data-value=".">.</button>
-                    <button class="btn btn-light" data-value="%">%</button>
-                    <button class="btn btn-success btn-igual">=</button>
+                <div class="row mb-1">
+                    <div class="col-12">
+                        <button class="btn btn-light" data-value="4">4</button>
+                        <button class="btn btn-light" data-value="5">5</button>
+                        <button class="btn btn-light" data-value="6">6</button>
+                        <button class="btn btn-light" data-value="-">-</button>
+                    </div>
+                </div>
+
+                <div class="row mb-1">
+                    <div class="col-12">
+                        <button class="btn btn-light" data-value="1">1</button>
+                        <button class="btn btn-light" data-value="2">2</button>
+                        <button class="btn btn-light" data-value="3">3</button>
+                        <button class="btn btn-light" data-value="+">+</button>
+                    </div>
+                </div>
+                
+                <div class="row mb-1">
+                    <div class="col-12">
+                        <button class="btn btn-light" data-value="0">0</button>
+                        <button class="btn btn-light" data-value=".">.</button>
+                        <button class="btn btn-success btn-igual">=</button>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#CalculadoraAvancada" aria-expanded="false" aria-controls="CalculadoraAvancada">
+                        Avançada
+                    </button>
+                </div>
+            
+                <div class="mt-5 collapse container text-center" id="CalculadoraAvancada">
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <button class="btn btn-light" data-value="cos(">cos</button>
+                            <button class="btn btn-light" data-value="sin(">sin</button>
+                            <button class="btn btn-light" data-value="tan(">tan</button>
+                            <button class="btn btn-light" data-value="x">x</button>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <button class="btn btn-light" data-value="cosh(">cosh</button>
+                            <button class="btn btn-light" data-value="sinh(">sinh</button>
+                            <button class="btn btn-light" data-value="tanh(">tanh</button>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <button class="btn btn-light" data-value="π">π</button>
+                            <button class="btn btn-light" data-value="e">e</button>
+                            <button class="btn btn-light" data-value="log(">log</button>
+                            <button class="btn btn-light" data-value="ln(">ln</button>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <button class="btn btn-light" data-value="(">(</button>
+                            <button class="btn btn-light" data-value=")">)</button>
+                            <button class="btn btn-light" data-value="^">^</button>
+                            <button class="btn btn-light" data-value="√">√</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <div class="row my-3 justify-content-center">
-            <div class="col-auto">
+        <div class="row container mx-auto my-3 px-2">
+            <div class="col-3">
                 <label for="inputXMin" class="form-label">X Min</label>
                 <input type="number" step="any" id="inputXMin" class="form-control" value="-100">
             </div>
-            <div class="col-auto">
+            <div class="col-3">
                 <label for="inputXMax" class="form-label">X Max</label>
                 <input type="number" step="any" id="inputXMax" class="form-control" value="100">
             </div>
-            <div class="col-auto">
+            <div class="col-3">
                 <label for="inputYMin" class="form-label">Y Min</label>
                 <input type="number" step="any" id="inputYMin" class="form-control" placeholder="Auto">
             </div>
-            <div class="col-auto">
+            <div class="col-3">
                 <label for="inputYMax" class="form-label">Y Max</label>
                 <input type="number" step="any" id="inputYMax" class="form-control" placeholder="Auto">
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-auto">
-                <button class="btn btn-primary" id="btnPlotarGrafico">Plotar Gráfico</button>
+                <button class="btn btn-primary btn-plotar-grafico">Plotar Gráfico</button>
             </div>
         </div>
 
@@ -145,6 +232,7 @@
     <script src="../js/calc.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.2.0/dist/chartjs-plugin-zoom.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

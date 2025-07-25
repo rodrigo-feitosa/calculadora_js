@@ -12,81 +12,161 @@
         <header>
             <nav class="navbar justify-content-center">
                 <div>
-                    <ul class="nav">
-                        <li><a class="nav-link" href="../index.html">Início</a></li>
-                        <li><a class="nav-link" href="/paginas/avancada.html">Avançada</a></li>
-                        <li><a class="nav-link" href="/paginas/financeira.html">Financeira</a></li>
-                        <li><a class="nav-link" href="/paginas/grafica.html">Gráfica</a></li>
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/paginas/avancada.html">Avançada</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/paginas/financeira.html">Financeira</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/paginas/grafica.html">Gráfica</a></li>
                     </ul>
                 </div>
             </nav>
         </header>
     </div>
     <main>
-        <section id="calc-avancada" class="container text-center bg-white py-5 rounded shadow">
+        <section id="calc-financeira" class="mx-auto text-center bg-white py-5 rounded shadow">
             <div class="text-center mb-3">
                 <div class="row align-items-start justify-content-center">
                     <button class="col-auto btn btn-info me-2" id="btnModoAngulo" style="height: 50px;">
                         Rad/Deg: <span id="modoAngulo">Rad</span>
                     </button>
-                    <input class="col-auto mb-3 me-1" id="display" disabled />
+                    <input class="col-auto mb-3 me-1" id="display" style="max-width: 200px;" disabled />
                     <button class="col-auto btn btn-light me-2" id="btnAbrirHistorico" style="height: 50px;">
                         &#128339;<span id="simboloHistorico"></span>
                     </button>
                 </div>
             </div>
-            <div class="row mb-1">
-                <div class="col-6">
-                    <button class="btn btn-danger" id="btnLimparDisplay">C</button>
-                    <button class="btn btn-light" data-value="7">7</button>
-                    <button class="btn btn-light" data-value="8">8</button>
-                    <button class="btn btn-light" data-value="9">9</button>
-                    <button class="btn btn-light" data-value="/">/</button>
-                    <button class="btn btn-light" data-value="√">&radic;</button>
+            <div class="container text-center d-none d-sm-block">
+                <div class="row mb-1">
+                    <div class="col-6">
+                        <button class="btn btn-danger btn-limpar-display">C</button>
+                        <button class="btn btn-light" data-value="7">7</button>
+                        <button class="btn btn-light" data-value="8">8</button>
+                        <button class="btn btn-light" data-value="9">9</button>
+                        <button class="btn btn-light" data-value="/">/</button>
+                        <button class="btn btn-light" data-value="√">&radic;</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-light" data-value="(">(</button>
+                        <button class="btn btn-light" data-value=")">)</button>
+                        <button class="btn btn-light btn-abrir-valor-presente">VP</button>
+                        <button class="btn btn-light btn-abrir-valor-futuro">VF</button>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <button class="btn btn-light" data-value="(">(</button>
-                    <button class="btn btn-light" data-value=")">)</button>
-                    <button id="btnAbrirValorPresente" class="btn btn-light">VP</button>
-                    <button id="btnAbrirValorFuturo" class="btn btn-light">VF</button>
+
+                <div class="row mb-1">
+                    <div class="col-6">
+                        <button class="btn btn-warning btn-apagar">⌫</button>
+                        <button class="btn btn-light" data-value="4">4</button>
+                        <button class="btn btn-light" data-value="5">5</button>
+                        <button class="btn btn-light" data-value="6">6</button>
+                        <button class="btn btn-light" data-value="*">*</button>
+                        <button class="btn btn-light" data-value="^">^</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-light btn-abrir-juros-simples">Juros simples</button>
+                    </div>
+                </div>
+
+                <div class="row mb-1">   
+                    <div class="col-6">
+                        <button class="btn btn-light btn-ultimo-resultado">Ans</button>
+                        <button class="btn btn-light" data-value="1">1</button>
+                        <button class="btn btn-light" data-value="2">2</button>
+                        <button class="btn btn-light" data-value="3">3</button>
+                        <button class="btn btn-light" data-value="-">-</button>
+                        <button class="btn btn-light" data-value="+">+</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-light btn-abrir-juros-compostos">Juros compostos </button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <button class="btn btn-light" data-value="0">0</button>
+                        <button class="btn btn-light" data-value="00">00</button>
+                        <button class="btn btn-light" data-value=".">.</button>
+                        <button class="btn btn-light" data-value="%">%</button>
+                        <button class="btn btn-success btn-igual">=</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="row mb-1">
-                <div class="col-6">
-                    <button class="btn btn-warning" id="btnApagar">⌫</button>
-                    <button class="btn btn-light" data-value="4">4</button>
-                    <button class="btn btn-light" data-value="5">5</button>
-                    <button class="btn btn-light" data-value="6">6</button>
-                    <button class="btn btn-light" data-value="*">*</button>
-                    <button class="btn btn-light" data-value="^">^</button>
+            <div class="container text-center d-block d-sm-none">
+                <div class="row mb-1">
+                    <div class="col-12">
+                        <button class="btn btn-danger btn-limpar-display">C</button>
+                        <button class="btn btn-warning btn-apagar">⌫</button>
+                        <button class="btn btn-light" data-value="%">%</button>
+                        <button class="btn btn-light" data-value="/">/</button>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <button id="btnAbrirJurosSimples" class="btn btn-light">Juros simples</button>
-                </div>
-            </div>
 
-            <div class="row mb-1">   
-                <div class="col-6">
-                    <button class="btn btn-light" id="btnUltimoResultado">Ans</button>
-                    <button class="btn btn-light" data-value="1">1</button>
-                    <button class="btn btn-light" data-value="2">2</button>
-                    <button class="btn btn-light" data-value="3">3</button>
-                    <button class="btn btn-light" data-value="-">-</button>
-                    <button class="btn btn-light" data-value="+">+</button>
+                <div class="row mb-1">
+                    <div class="col-12">
+                        <button class="btn btn-light" data-value="7">7</button>
+                        <button class="btn btn-light" data-value="8">8</button>
+                        <button class="btn btn-light" data-value="9">9</button>
+                        <button class="btn btn-light" data-value="*">*</button>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <button id="btnAbrirJurosCompostos" class="btn btn-light">Juros compostos </button>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-6">
-                    <button class="btn btn-light" data-value="0">0</button>
-                    <button class="btn btn-light" data-value="00">00</button>
-                    <button class="btn btn-light" data-value=".">.</button>
-                    <button class="btn btn-light" data-value="%">%</button>
-                    <button class="btn btn-success btn-igual" id="btnIgual">=</button>
+                <div class="row mb-1">
+                    <div class="col-12">
+                        <button class="btn btn-light" data-value="4">4</button>
+                        <button class="btn btn-light" data-value="5">5</button>
+                        <button class="btn btn-light" data-value="6">6</button>
+                        <button class="btn btn-light" data-value="-">-</button>
+                    </div>
+                </div>
+
+                <div class="row mb-1">
+                    <div class="col-12">
+                        <button class="btn btn-light" data-value="1">1</button>
+                        <button class="btn btn-light" data-value="2">2</button>
+                        <button class="btn btn-light" data-value="3">3</button>
+                        <button class="btn btn-light" data-value="+">+</button>
+                    </div>
+                </div>
+                
+                <div class="row mb-1">
+                    <div class="col-12">
+                        <button class="btn btn-light" data-value="0">0</button>
+                        <button class="btn btn-light" data-value=".">.</button>
+                        <button class="btn btn-success btn-igual">=</button>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#CalculadoraFinanceira" aria-expanded="false" aria-controls="CalculadoraFinanceira">
+                        Financeira
+                    </button>
+                </div>
+            
+                <div class="mt-5 collapse container text-center" id="CalculadoraFinanceira">
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <button class="btn btn-light" data-value="(">(</button>
+                            <button class="btn btn-light" data-value=")">)</button>
+                            <button class="btn btn-light btn-abrir-valor-presente">VP</button>
+                            <button class="btn btn-light btn-abrir-valor-futuro">VF</button>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <button class="btn btn-light btn-abrir-juros-simples">Juros simples</button>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <button class="btn btn-light btn-abrir-juros-compostos">Juros compostos </button>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <button class="btn btn-light" data-value="^">^</button>
+                            <button class="btn btn-light" data-value="√">√</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -105,8 +185,8 @@
                 <label for="periodosVP">Períodos:</label>
                 <input type="number" id="periodosVP" class="form-control mb-2">
 
-                <button type="button" class="btn btn-primary" id="btnCalcularValorPresente">Calcular VP</button>
-                <button type="button" class="btn btn-secondary" id="btnFecharValorPresente">Fechar</button>
+                <button type="button" class="btn btn-primary btn-calcular-valor-presente">Calcular VP</button>
+                <button type="button" class="btn btn-secondary btn-fechar-valor-presente">Fechar</button>
             </form>
         </div>
     </div>
@@ -124,8 +204,8 @@
                 <label for="periodosVF">Períodos:</label>
                 <input type="number" id="periodosVF" class="form-control mb-2">
 
-                <button type="button" class="btn btn-primary" id="btnCalcularValorFuturo">Calcular VF</button>
-                <button type="button" class="btn btn-secondary" id="btnFecharValorFuturo">Fechar</button>
+                <button type="button" class="btn btn-primary btn-calcular-valor-futuro">Calcular VF</button>
+                <button type="button" class="btn btn-secondary btn-fechar-valor-futuro">Fechar</button>
             </form>
         </div>
     </div>
@@ -143,8 +223,8 @@
                 <label for="periodosSimples">Períodos:</label>
                 <input type="number" id="periodosSimples" class="form-control mb-2">
 
-                <button type="button" class="btn btn-primary" id="btnCalcularJurosSimples">Calcular Juros Simples</button>
-                <button type="button" class="btn btn-secondary" id="btnFecharJurosSimples">Fechar</button>
+                <button type="button" class="btn btn-primary btn-calcular-juros-simples">Calcular Juros Simples</button>
+                <button type="button" class="btn btn-secondary btn-fechar-juros-simples">Fechar</button>
             </form>
         </div>
     </div>
@@ -162,8 +242,8 @@
                 <label for="periodosCompostos">Períodos:</label>
                 <input type="number" id="periodosCompostos" class="form-control mb-2">
 
-                <button type="button" class="btn btn-primary" id="btnCalcularJurosCompostos">Calcular Juros Compostos</button>
-                <button type="button" class="btn btn-secondary" id="btnFecharJurosCompostos">Fechar</button>
+                <button type="button" class="btn btn-primary btn-calcular-juros-compostos">Calcular Juros Compostos</button>
+                <button type="button" class="btn btn-secondary btn-fechar-juros-compostos">Fechar</button>
             </form>
         </div>
     </div>
@@ -183,5 +263,6 @@
     </script>
 
     <script src="../js/calc.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
