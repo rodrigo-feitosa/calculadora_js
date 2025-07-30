@@ -18,18 +18,18 @@ class CalculadoraBasica {
     }
 
     calculate() {
-        let expression = this.display.value;
+        let expressao = this.display.value;
 
-        expression = expression.replace(/\^/g, '**');
-        expression = expression.replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)');
-        expression = expression.replace(/%/g, '/100');
+        expressao = expressao.replace(/\^/g, '**');
+        expressao = expressao.replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)');
+        expressao = expressao.replace(/%/g, '/100');
 
         try {
-            const result = eval(expression);
+            const result = eval(expressao);
             this.display.value = result;
             this.ultimoResultado = result;
 
-            this.adicionarHistorico(`${expression} = ${result}`);
+            this.adicionarHistorico(`${expressao} = ${result}`);
         } catch (e) {
             this.display.value = 'Erro';
         }
@@ -94,42 +94,59 @@ class CalculadoraAvancada extends CalculadoraBasica {
         return n * this.fatorial(n - 1);
     }
 
-    calculate() {
-        let expression = this.display.value;
+    fecharParenteses(expressao) {
+        let abertos = 0;
+        let fechados = 0
 
-        expression = expression.replace(/\^/g, '**');
-        expression = expression.replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)');
-        expression = expression.replace(/%/g, '/100');
-
-        if (this.modoAngulo === 'Deg') {
-            expression = expression.replace(/cos\(([^)]+)\)/g, (_, val) => `Math.cos(${this.toRadians(val)})`);
-            expression = expression.replace(/sin\(([^)]+)\)/g, (_, val) => `Math.sin(${this.toRadians(val)})`);
-            expression = expression.replace(/tan\(([^)]+)\)/g, (_, val) => `Math.tan(${this.toRadians(val)})`);
-            expression = expression.replace(/cosh\(([^)]+)\)/g, (_, val) => `Math.cosh(${this.toRadians(val)})`);
-            expression = expression.replace(/sinh\(([^)]+)\)/g, (_, val) => `Math.sinh(${this.toRadians(val)})`);
-            expression = expression.replace(/tanh\(([^)]+)\)/g, (_, val) => `Math.tanh(${this.toRadians(val)})`);
-        } else {
-            expression = expression.replace(/cos\(([^)]+)\)/g, 'Math.cos($1)');
-            expression = expression.replace(/sin\(([^)]+)\)/g, 'Math.sin($1)');
-            expression = expression.replace(/tan\(([^)]+)\)/g, 'Math.tan($1)');
-            expression = expression.replace(/cosh\(([^)]+)\)/g, 'Math.cosh($1)');
-            expression = expression.replace(/sinh\(([^)]+)\)/g, 'Math.sinh($1)');
-            expression = expression.replace(/tanh\(([^)]+)\)/g, 'Math.tanh($1)');
+        for (let char of expressao) {
+            if (char === '(') abertos++;
+            if (char === ')') fechados++;
         }
 
-        expression = expression.replace(/e/g, 'Math.E');
-        expression = expression.replace(/π/g, 'Math.PI');
-        expression = expression.replace(/log\(([^)]+)\)/g, 'Math.log10($1)');
-        expression = expression.replace(/ln\(([^)]+)\)/g, 'Math.log($1)');
-        expression = expression.replace(/(\d+)!/g, (_, val) => this.fatorial(val));
-        expression = expression.replace(/(\d+)x⁻¹/g, '1/$1');
+        let diferenca = abertos - fechados;
+        if (diferenca > 0) {
+            expressao += ')'.repeat(diferenca);
+        }
+
+        return expressao;
+    }
+
+    calculate() {
+        let expressao = this.fecharParenteses(this.display.value);
+
+        expressao = expressao.replace(/\^/g, '**');
+        expressao = expressao.replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)');
+        expressao = expressao.replace(/%/g, '/100');
+
+        if (this.modoAngulo === 'Deg') {
+            expressao = expressao.replace(/cos\(([^)]+)\)/g, (_, val) => `Math.cos(${this.toRadians(val)})`);
+            expressao = expressao.replace(/sin\(([^)]+)\)/g, (_, val) => `Math.sin(${this.toRadians(val)})`);
+            expressao = expressao.replace(/tan\(([^)]+)\)/g, (_, val) => `Math.tan(${this.toRadians(val)})`);
+            expressao = expressao.replace(/cosh\(([^)]+)\)/g, (_, val) => `Math.cosh(${this.toRadians(val)})`);
+            expressao = expressao.replace(/sinh\(([^)]+)\)/g, (_, val) => `Math.sinh(${this.toRadians(val)})`);
+            expressao = expressao.replace(/tanh\(([^)]+)\)/g, (_, val) => `Math.tanh(${this.toRadians(val)})`);
+        } else {
+            expressao = expressao.replace(/cos\(([^)]+)\)/g, 'Math.cos($1)');
+            expressao = expressao.replace(/sin\(([^)]+)\)/g, 'Math.sin($1)');
+            expressao = expressao.replace(/tan\(([^)]+)\)/g, 'Math.tan($1)');
+            expressao = expressao.replace(/cosh\(([^)]+)\)/g, 'Math.cosh($1)');
+            expressao = expressao.replace(/sinh\(([^)]+)\)/g, 'Math.sinh($1)');
+            expressao = expressao.replace(/tanh\(([^)]+)\)/g, 'Math.tanh($1)');
+        }
+
+        expressao = expressao.replace(/e/g, 'Math.E');
+        expressao = expressao.replace(/π/g, 'Math.PI');
+        expressao = expressao.replace(/log\(([^)]+)\)/g, 'Math.log10($1)');
+        expressao = expressao.replace(/ln\(([^)]+)\)/g, 'Math.log($1)');
+        expressao = expressao.replace(/(\d+)!/g, (_, val) => this.fatorial(val));
+        expressao = expressao.replace(/(\d+)x⁻¹/g, '1/$1');
 
         try {
-            const result = eval(expression);
+            const result = eval(expressao);
             this.display.value = result;
             this.ultimoResultado = result;
 
-            this.adicionarHistorico(`${expression} = ${result}`);
+            this.adicionarHistorico(`${expressao} = ${result}`);
         } catch (e) {
             this.display.value = 'Erro';
         }
@@ -240,7 +257,7 @@ class CalculadoraGrafica extends CalculadoraAvancada {
     }
 
     plotarGrafico() {
-        let expression = this.display.value;
+        let expressao = this.display.value;
         const canvas = document.getElementById('grafico');
         const ctx = canvas.getContext('2d');
 
@@ -273,7 +290,7 @@ class CalculadoraGrafica extends CalculadoraAvancada {
         const step = 0.1;
 
         // Substituições para a expressão
-        let plotExpression = expression
+        let plotexpressao = expressao
             .replace(/\^/g, '**')
             .replace(/√/g, 'Math.sqrt')
             .replace(/%/g, '/100')
@@ -284,7 +301,7 @@ class CalculadoraGrafica extends CalculadoraAvancada {
 
         // Funções trigonométricas com conversão de ângulo
         if (this.modoAngulo === 'Deg') {
-            plotExpression = plotExpression
+            plotexpressao = plotexpressao
                 .replace(/cos\(([^)]+)\)/g, 'Math.cos(toRadians($1))')
                 .replace(/sin\(([^)]+)\)/g, 'Math.sin(toRadians($1))')
                 .replace(/tan\(([^)]+)\)/g, 'Math.tan(toRadians($1))')
@@ -292,7 +309,7 @@ class CalculadoraGrafica extends CalculadoraAvancada {
                 .replace(/sinh\(([^)]+)\)/g, 'Math.sinh(toRadians($1))')
                 .replace(/tanh\(([^)]+)\)/g, 'Math.tanh(toRadians($1))');
         } else {
-            plotExpression = plotExpression
+            plotexpressao = plotexpressao
                 .replace(/cos\(([^)]+)\)/g, 'Math.cos($1)')
                 .replace(/sin\(([^)]+)\)/g, 'Math.sin($1)')
                 .replace(/tan\(([^)]+)\)/g, 'Math.tan($1)')
@@ -305,8 +322,8 @@ class CalculadoraGrafica extends CalculadoraAvancada {
         for (let x = xMin; x <= xMax; x += step) {
             try {
                 // Substituir 'x' na expressão pelo valor atual
-                let evalExpression = plotExpression.replace(/(\b)x(\b|$)/g, `(${x})`);
-                let y = eval(evalExpression);
+                let evalexpressao = plotexpressao.replace(/(\b)x(\b|$)/g, `(${x})`);
+                let y = eval(evalexpressao);
                 if (typeof y === 'number' && isFinite(y)) {
                     xValues.push(parseFloat(x.toFixed(2)));
                     yValues.push(y);
@@ -329,7 +346,7 @@ class CalculadoraGrafica extends CalculadoraAvancada {
             data: {
                 labels: xValues,
                 datasets: [{
-                    label: `f(x) = ${expression}`,
+                    label: `f(x) = ${expressao}`,
                     data: yValues,
                     borderColor: '#4bc0c0',
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
