@@ -25,6 +25,12 @@ class CalculadoraBasica {
     calculate() {
         let expressao = this.display.value;
 
+        if (!expressao) return false;
+
+        if (!/[0-9]/.test(expressao)) {
+            return false;
+        }
+
         expressao = expressao.replace(/\^/g, '**');
         expressao = expressao.replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)');
         expressao = expressao.replace(/%/g, '/100');
