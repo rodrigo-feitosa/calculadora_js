@@ -6,6 +6,11 @@ class CalculadoraBasica {
     }
 
     append(value) {
+        // validação para não permitir dois operadores em sequência
+        if (/[+\-*/^%]{1}$/.test(this.display.value) && /[+\-*/^%]/.test(value)) {
+            return;
+        }
+
         this.display.value += value;
     }
 
@@ -152,7 +157,6 @@ class CalculadoraAvancada extends CalculadoraBasica {
         }
     }
 }
-
 
 class CalculadoraFinanceira extends CalculadoraAvancada {
     constructor(displayId) {
