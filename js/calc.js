@@ -31,18 +31,30 @@ class CalculadoraBasica {
             return false;
         }
 
+        expressao = expressao.replace(/%(\d)/g, '%*$1');
         expressao = expressao.replace(/\^/g, '**');
         expressao = expressao.replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)');
         expressao = expressao.replace(/%/g, '/100');
 
         try {
             const result = eval(expressao);
+
+            if (!isFinite(result)) {
+                alert('Divisão por zero ou resultado infinito');
+                return false;
+            }
+
+            if (isNaN(result)) {
+                alert('Resultado indefinido (NaN)');
+                return false;
+            }
+
             this.display.value = result;
             this.ultimoResultado = result;
 
             this.adicionarHistorico(`${expressao} = ${result}`);
         } catch (e) {
-            this.display.value = 'Erro';
+            alert('Expressão inválida.');
         }
     }
 
@@ -125,6 +137,13 @@ class CalculadoraAvancada extends CalculadoraBasica {
     calculate() {
         let expressao = this.fecharParenteses(this.display.value);
 
+        if (!expressao) return false;
+
+        if (!/[0-9]/.test(expressao)) {
+            return false;
+        }
+
+        expressao = expressao.replace(/%(\d)/g, '%*$1');
         expressao = expressao.replace(/\^/g, '**');
         expressao = expressao.replace(/√(\d+(\.\d+)?)/g, 'Math.sqrt($1)');
         expressao = expressao.replace(/%/g, '/100');
@@ -154,12 +173,23 @@ class CalculadoraAvancada extends CalculadoraBasica {
 
         try {
             const result = eval(expressao);
+
+            if (!isFinite(result)) {
+                alert('Divisão por zero ou resultado infinito');
+                return false;
+            }
+            
+            if (isNaN(result)) {
+                alert('Resultado indefinido (NaN)');
+                return false;
+            }
+
             this.display.value = result;
             this.ultimoResultado = result;
 
             this.adicionarHistorico(`${expressao} = ${result}`);
         } catch (e) {
-            this.display.value = 'Erro';
+            alert('Expressão inválida.');
         }
     }
 }
@@ -328,7 +358,6 @@ class CalculadoraGrafica extends CalculadoraAvancada {
                 .replace(/tanh\(([^)]+)\)/g, 'Math.tanh($1)');
         }
 
-        // Gerar valores de x e y
         for (let x = xMin; x <= xMax; x += step) {
             try {
                 // Substituir 'x' na expressão pelo valor atual
@@ -343,14 +372,12 @@ class CalculadoraGrafica extends CalculadoraAvancada {
             }
         }
 
-        // Verificar se há dados válidos para plotar
         if (xValues.length === 0) {
             alert('Não foi possível plotar o gráfico. Verifique a expressão.');
             canvas.style.display = 'none';
             return;
         }
 
-        // Configurar o gráfico com Chart.js
         this.myChart = new Chart(ctx, {
             type: 'line',
             data: {
